@@ -23,8 +23,10 @@ on Mac.
 
 ### Requirements
 
-- [Vagrant](https://www.vagrantup.com/)
 - [VirtualBox](https://www.virtualbox.org/)
+- [Vagrant](https://www.vagrantup.com/)
+- [vagrant-env](https://github.com/gosuri/vagrant-env) (Vagrant plugin)
+- [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest) (Vagrant plugin)
 
 
 ### Getting Started
@@ -33,42 +35,20 @@ on Mac.
 source .env && vagrant up
 ```
 
+The [.env](https://github.com/efcasado/docker-for-mac/blob/main/.env) is a
+convenience file that allows you to easily adjust some parameters of the
+Vagrant (virtual) machine where Docker will run.
 
-```
-vagrant plugin install vagrant-env
-```
 
-```sh
-brew install direnv
-```
-
-https://direnv.net/docs/hook.html
-
-```
-direnv allow
-```
-
-```sh
-brew install vagrant
-```
-
-```sh
-vagrant plugin install vagrant-vbguest
-```
-
-```sh
-vagrant up
-vagrant reload
-vagrant suspend
-vagrant resume
-vagrant halt
-vagrant destroy
-```
+For more information about the `vagrant` command, please, check the [official
+documentation](https://www.vagrantup.com/docs/cli).
 
 ```sh
 docker context create workbox --docker "host=ssh://vagrant@192.168.56.4"
 docker context use workbox
 ```
+
+### Benchmark(s)
 
 ```sh
 docker context use default
