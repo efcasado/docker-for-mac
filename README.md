@@ -59,6 +59,6 @@ docker context use workbox
 time USE_DOCKER=1 make
 # => 0.35s user 0.14s system 1% cpu 25.123 total
 
-USE_DOCKER=0 make
+time USE_DOCKER=0 make
 # => 34.23s user 4.89s system 215% cpu 18.169 total
 ```
