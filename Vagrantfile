@@ -1,4 +1,15 @@
-# https://gist.github.com/koemeet/fa4a777dea2e882c859d
+# Install required plugins if not present.
+required_plugins = ["vagrant-env", "vagrant-vbguest"]
+required_plugins.each do |plugin|
+  need_restart = false
+  unless Vagrant.has_plugin? plugin
+    system "vagrant plugin install #{plugin}"
+    need_restart = true
+  end
+  exec "vagrant #{ARGV.join(' ')}" if need_restart
+end
+
+# Configuration of the Vagrant box
 Vagrant.configure("2") do |config|
   config.ssh.forward_agent = true
   config.env.enable
