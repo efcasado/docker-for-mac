@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
     v.memory = ENV['DOCKER_FOR_MAC_MEMORY']
     v.cpus = ENV['DOCKER_FOR_MAC_CPUS']
     v.name = "workbox"
-    v.check_guest_additions = true
+    v.check_guest_additions = (ENV['DOCKER_FOR_MAC_CHECK_GUEST_ADDITIONS'] == "true")
   end
 
   # Configure static private IP address
