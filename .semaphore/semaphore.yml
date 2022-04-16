@@ -15,6 +15,13 @@ blocks:
             - sudo apt-get -y install virtualbox
             - sudo apt-get -y install vagrant
             - ssh-keygen -b 2048 -t rsa -f ~/.ssh/semaphore_test_key -q -N ""
+            - |
+              cat <<EOF >> ~/.ssh/config
+              Host 192.168.56.4
+                User vagrant
+                IdentityFile ~/.ssh/semaphore_test_key
+                IdentitiesOnly yes
+              EOF
             - vagrant up
             - docker context create workbox --docker "host=ssh://vagrant@192.168.56.4"
             - docker context use workbox
