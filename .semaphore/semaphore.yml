@@ -14,7 +14,11 @@ blocks:
             - sudo apt-get update
             - sudo apt-get -y install virtualbox
             - sudo apt-get -y install vagrant
+            - cache restore vagrant-plugins
+            - cache restore vagrant-boxes
             - vagrant up
+            - cache store vagrant-plugins ${HOME}/.vagrant.d/gems/*/gems
+            - cache store vagrant-boxes ${HOME}/.vagrant.d/boxes
             - docker context create workbox --docker "host=ssh://vagrant@192.168.56.4"
             - docker context use workbox
             - docker run --rm -it hello-world
