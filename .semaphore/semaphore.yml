@@ -21,9 +21,10 @@ blocks:
                 User vagrant
                 IdentityFile ~/.ssh/semaphore_test_key
                 IdentitiesOnly yes
+                StrictHostKeyChecking no
+                UserKnownHostsFile=/dev/null
               EOF
             - cat ~/.ssh/config
-            - ssh-keyscan -H 192.168.56.4 >> ~/.ssh/known_hosts
             - vagrant up
             - docker context create workbox --docker "host=ssh://vagrant@192.168.56.4"
             - docker context use workbox
