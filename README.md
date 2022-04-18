@@ -1,5 +1,6 @@
 # Docker for Mac
-[![Build Status](https://efcasado.semaphoreci.com/badges/docker-for-mac/branches/master.svg?style=shields)]
+[![Build Status](https://efcasado.semaphoreci.com/badges/docker-for-mac/branches/main.svg?style=shields)](https://efcasado.semaphoreci.com/branches/76c9b2a7-aaf6-4074-aa5d-430fbe5327ab)
+
 
 [Docker](https://www.docker.com/) is an excellent tool to create standardised
 and fully isolated development environments. Sadly, Docker's I/O performance
