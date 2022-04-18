@@ -34,16 +34,22 @@ on Mac.
 ### Getting Started
 
 ```sh
-source .env && vagrant up
+vagrant up
 ```
 
-The [.env](https://github.com/efcasado/docker-for-mac/blob/main/.env) is a
-convenience file that allows you to easily adjust some parameters of the
+The [.env](https://github.com/efcasado/docker-for-mac/blob/main/.env) file is
+a convenience file that allows you to easily adjust some parameters of the
 Vagrant (virtual) machine where Docker will run.
 
 
 For more information about the `vagrant` command, please, check the [official
 documentation](https://www.vagrantup.com/docs/cli).
+
+Once the Vagrant machine has been provisioned, one can configure the Docker
+client running on the host machine to interact with the Docker daemon running
+in the guest machine we just provisioned with Vagrant. Below is an example of
+how to use the [docker context](https://docs.docker.com/engine/context/working-with-contexts/)
+command to do this.
 
 ```sh
 docker context create workbox --docker "host=ssh://vagrant@192.168.56.4"
