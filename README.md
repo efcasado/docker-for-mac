@@ -3,7 +3,7 @@
 
 
 [Docker](https://www.docker.com/) is an excellent tool to create standardised
-and fully isolated development environments. Sadly, Docker's I/O performance
+and isolated development environments. Sadly, Docker's I/O performance
 on macOS is quite underwhelming, to say the least, which renders most efforts
 at creating Docker-based workflows on macOS useless.
 
