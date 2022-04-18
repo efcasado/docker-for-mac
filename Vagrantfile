@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
 
   # Install Docker and Docker Compose
   config.vm.provision :docker
-  #config.vm.provision "shell", path: "provision-docker-compose.sh"
+  config.vm.provision "shell", path: "provision-docker-compose.sh"
 
   # Configure SSH keys
   config.vm.provision "file", source: "~/.ssh", destination: "/home/vagrant/.ssh"
