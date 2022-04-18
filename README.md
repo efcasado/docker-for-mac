@@ -26,9 +26,11 @@ on Mac.
 ### Requirements
 
 - [VirtualBox](https://www.virtualbox.org/)
+- [Parallels](https://www.parallels.com/)
 - [Vagrant](https://www.vagrantup.com/)
 - [vagrant-env](https://github.com/gosuri/vagrant-env) (Vagrant plugin)
 - [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest) (Vagrant plugin)
+- [vagrant-parallels](https://github.com/Parallels/vagrant-parallels) (Vagrant plugin)
 
 
 ### Getting Started
