@@ -38,5 +38,4 @@ Vagrant.configure("2") do |config|
   # Configure SSH keys
   config.vm.provision "file", source: "~/.ssh", destination: "/home/vagrant/.ssh"
   config.vm.provision "shell", path: "provision-ssh-keys.sh", privileged: false
-  #config.vm.provision "shell", path: "provision-ssh-agent.sh", privileged: false, run: 'always'
 end
