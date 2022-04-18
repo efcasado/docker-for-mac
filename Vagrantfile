@@ -1,5 +1,5 @@
 # Install required plugins if not present.
-required_plugins = ["vagrant-env", "vagrant-vbguest"]
+required_plugins = ["vagrant-env", "vagrant-vbguest", "vagrant-parallels"]
 required_plugins.each do |plugin|
   need_restart = false
   unless Vagrant.has_plugin? plugin
@@ -17,14 +17,26 @@ Vagrant.configure("2") do |config|
 
   config.vm.box = ENV['DOCKER_FOR_MAC_VAGRANT_BOX']
 
-  config.vbguest.auto_update = (ENV['DOCKER_FOR_MAC_UPDATE_GUEST_ADDITIONS'] == "true")
-  config.vbguest.no_remote = (ENV['DOCKER_FOR_MAC_UPDATE_GUEST_ADDITIONS'] == "false")
+  case ENV['DOCKER_FOR_MAC_VAGRANT_PROVIDER']
+  when "virtualbox"
+    config.vbguest.auto_update = (ENV['DOCKER_FOR_MAC_UPDATE_GUEST_ADDITIONS'] == "true")
+    config.vbguest.no_remote = (ENV['DOCKER_FOR_MAC_UPDATE_GUEST_ADDITIONS'] == "false")
 
-  config.vm.provider "virtualbox" do |v|
-    v.memory = ENV['DOCKER_FOR_MAC_MEMORY']
-    v.cpus = ENV['DOCKER_FOR_MAC_CPUS']
-    v.name = "workbox"
-    v.check_guest_additions = (ENV['DOCKER_FOR_MAC_UPDATE_GUEST_ADDITIONS'] == "true")
+    config.vm.provider "virtualbox" do |v|
+      v.memory = ENV['DOCKER_FOR_MAC_MEMORY']
+      v.cpus = ENV['DOCKER_FOR_MAC_CPUS']
+      v.name = "workbox"
+      v.check_guest_additions = (ENV['DOCKER_FOR_MAC_UPDATE_GUEST_ADDITIONS'] == "true")
+    end
+
+  when "parallels"
+    config.vm.provider "parallels" do |prl|
+      prl.memory = ENV['DOCKER_FOR_MAC_MEMORY']
+      prl.cpus = ENV['DOCKER_FOR_MAC_CPUS']
+      prl.name = "workbox"
+      prl.check_guest_tools = (ENV['DOCKER_FOR_MAC_UPDATE_GUEST_ADDITIONS'] == "true")
+      prl.update_guest_tools = (ENV['DOCKER_FOR_MAC_UPDATE_GUEST_ADDITIONS'] == "true")
+    end
   end
 
   # Configure static private IP address
